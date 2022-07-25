@@ -58,6 +58,7 @@ const output = computed(() => {
   <li><strong>繁化：</strong><span>如果您生活在或曾经生活在中国香港或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；</span></li>
   <hr>
   <li><span>我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学</span></li>
+  <li><strong>字幕组所收集字体包：</strong><span>详见 <strong><a href="https://bbs.acgrip.com/thread-9396-1-1.html" target="_blank" style="text-decoration-line: none; color: #3d3e5b;">Anime 字幕论坛</a></strong></span></li>
 </ul>
 </div>`
 })
