@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 type CCType = 'by-nc-nd' | 'by-nc-sa'
 
+const imgSrc = ref('')
 const workInfo = ref('')
 const staffTextArea = ref('')
 const CC = ref<CCType>('by-nc-sa')
@@ -16,10 +17,9 @@ const output = computed(() => {
 
   const workInfoLines = workInfo.value.split('\n')
   let workInfoHtml: string[] = []
-  let imgSrc = ''
   for (const line of workInfoLines) {
     if (line.startsWith('[img]')) {
-      imgSrc = line.replace('[img]', '').replace('[/img]', '')
+      continue
     } else if (line !== '' && !line.includes('◎简　　介')) {
       workInfoHtml.push(`<div>${line}</div>`)
     } else if (line !== '' && line.includes('◎简　　介')) {
@@ -30,7 +30,7 @@ const output = computed(() => {
   }
 
   return `<div style="text-align: left;">
-<img alt="封面" style="margin-left: 10px; margin-bottom: 10px;" id="wr-cover" src="${imgSrc}">
+<div style="display: flex; justify-content: center;margin-bottom: 10px;"><img alt="封面" style="margin-left: 10px; margin-bottom: 10px; width: 720px; margin: 0 auto;" id="wr-cover" src="${imgSrc.value}"></div>
 <span style="font-family: arial, tahoma, verdana; color: rgb(60, 60, 60); font-size: 14px;" id="wr-info">
   ${workInfoHtml.join('\n  ')}
 </span>
@@ -68,11 +68,13 @@ const output = computed(() => {
   <main>
     <div class="preview" v-html="output"></div>
     <div class="input">
+      <el-input v-model="imgSrc" placeholder="填入图片链接" />
+
       <div class="work-info">
         <el-input
           v-model="workInfo"
           type="textarea"
-          placeholder="输入动画信息"
+          placeholder="填入 PT Gen 生成的信息"
         />
       </div>
 
@@ -80,7 +82,7 @@ const output = computed(() => {
         <el-input
           v-model="staffTextArea"
           type="textarea"
-          placeholder="输入 Staff，一行一个，空格或冒号区分。例如：嵌字：甲乙丙丁"
+          placeholder="填入 Staff，一行一个，空格或冒号区分。例如：嵌字：甲乙丙丁"
         />
       </div>
 
