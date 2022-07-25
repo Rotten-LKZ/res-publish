@@ -28,6 +28,7 @@ const output = computed(() => {
       break
     }
   }
+
   return `<div style="text-align: left;">
 <img alt="封面" style="margin-left: 10px; margin-bottom: 10px;" id="wr-cover" src="${imgSrc}">
 <span style="font-family: arial, tahoma, verdana; color: rgb(60, 60, 60); font-size: 14px;" id="wr-info">
