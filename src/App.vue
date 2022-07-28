@@ -45,7 +45,7 @@ const output = computed(() => {
 <ul style="font-family: arial, tahoma, verdana; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <li><h4 style="margin: 2px 0; font-size: 20px;">交流 / 报错 / 加入我们 欢迎加入</h4></li>
   <li><strong>QQ群：</strong><span>690716401</span></li>
-  <li><strong>Telegram频道：</strong><span><a href="https://t.me/lpsub_ch" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"></a><em>@lpsub_ch</em></a></span></li>
+  <li><strong>Telegram频道：</strong><span><a href="https://t.me/lpsub_ch" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"><em>@lpsub_ch</em></a></span></li>
   <li><strong>Telegram群组：</strong><span><a href="https://t.me/lpsub_chat" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"><em>@lpsub_chat</em></a></span></li>
   <li><strong>邮箱：</strong><span><a style="color: rgb(5, 58, 255); text-decoration-line: none;" height: 1px; border-top: 1px dashed rgb(60, 60, 60);ef="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></span></li>
 </ul>
@@ -67,7 +67,7 @@ const output = computed(() => {
 <template>
   <main>
     <div class="preview" v-html="output"></div>
-    <div class="input">
+    <div class="input"> 
       <el-input v-model="imgSrc" placeholder="填入图片链接" />
 
       <div class="work-info">
