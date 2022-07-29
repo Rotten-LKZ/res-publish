@@ -2,13 +2,15 @@
 import { computed, ref } from 'vue'
 
 type CCType = 'by-nc-nd' | 'by-nc-sa'
+type PublishPlatform = 'bangumi' | 'other'
 
 const imgSrc = ref('')
 const workInfo = ref('')
 const staffTextArea = ref('')
 const CC = ref<CCType>('by-nc-sa')
-const output = computed(() => {
-  const staffTemplate = '<li><strong>JOB：</strong><span>NAME</span></li>'
+const platform = ref<PublishPlatform>('other')
+const outputOther = computed(() => {
+  const staffTemplate = '<li><strong>JOB: </strong><span>NAME</span></li>'
   let staff: string[] = []
   for (const line of staffTextArea.value.split('\n')) {
     const args = line.split(': ')
@@ -24,7 +26,7 @@ const output = computed(() => {
       workInfoHtml.push(`<div>${line}</div>`)
     } else if (line !== '' && line.includes('◎简　　介')) {
       workInfoHtml.push(`<div>${line}</div>`)
-      workInfoHtml.push(`<span>${workInfoLines[workInfoLines.length - 1]}</div>`)
+      workInfoHtml.push(`<span>${workInfoLines[workInfoLines.length - 1]}</span>`)
       break
     }
   }
@@ -47,7 +49,7 @@ const output = computed(() => {
   <li><strong>QQ群：</strong><span>690716401</span></li>
   <li><strong>Telegram频道：</strong><span><a href="https://t.me/lpsub_ch" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"><em>@lpsub_ch</em></a></span></li>
   <li><strong>Telegram群组：</strong><span><a href="https://t.me/lpsub_chat" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"><em>@lpsub_chat</em></a></span></li>
-  <li><strong>邮箱：</strong><span><a style="color: rgb(5, 58, 255); text-decoration-line: none;" height: 1px; border-top: 1px dashed rgb(60, 60, 60);ef="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></span></li>
+  <li><strong>邮箱：</strong><span><a style="color: rgb(5, 58, 255); text-decoration-line: none; height: 1px;" href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></span></li>
 </ul>
 <ul style="font-family: arial, tahoma, verdana; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <li><h4 style="margin: 2px 0; font-size: 20px;">字幕组招募：翻译 校对 时轴 压制 繁化</h4></li>
@@ -62,11 +64,69 @@ const output = computed(() => {
 </ul>
 </div>`
 })
+
+const outputBangumi = computed(() => {
+  const staffTemplate = '<p>JOB: NAME</p>'
+  let staff: string[] = []
+  for (const line of staffTextArea.value.split('\n')) {
+    const args = line.split(': ')
+    staff.push(staffTemplate.replace('JOB', args[0]).replace('NAME', args.splice(1).join(': ')))
+  }
+
+  const workInfoLines = workInfo.value.split('\n')
+  let workInfoHtml: string[] = []
+  for (const line of workInfoLines) {
+    if (line.startsWith('[img]')) {
+      continue
+    } else if (line !== '' && !line.includes('◎简　　介')) {
+      workInfoHtml.push(`<p>${line}</p>`)
+    } else if (line !== '' && line.includes('◎简　　介')) {
+      workInfoHtml.push(`<p>${line}</p>`)
+      workInfoHtml.push(`<p>${workInfoLines[workInfoLines.length - 1]}</p>`)
+      break
+    }
+  }
+
+  return `<p><img alt="封面" src="${imgSrc.value}"></p>
+${workInfoHtml.join('\n')}
+<p><strong>---------------------------------------------------------------------------------------<br></strong></p>
+<p><strong>离谱Sub</strong><br></p>
+${staff.join('\n')}
+<p>交流/报错/加入我们 欢迎加入</p>
+<p><strong>QQ群</strong>:<strong> </strong><b>690716401</b></p>
+<p><b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b></p>
+<p><b>Telegram群组: <a href="https://t.me/lpsub_chat" target="_blank"><em>@lpsub_chat</em></a></b></p>
+<p>邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></p>
+<p><a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt=""></a></p>
+<p>本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a>进行许可。</p>
+<p><strong>---------------------------------------------------------------------------------------</strong><br></p>
+<p>
+	<strong>字幕组招募: 翻译 校对 时轴 压制 繁化</strong><br>
+	<strong>翻译: </strong>能正确听译动画即可，同时有一定语文水平（虽然不一定文笔要多好，但是至少不能写出病句）；<br>
+	<strong>校对: </strong>能对翻译稿的错误进行校正，同时有一定语文水平（当然也是至少不能写出病句）；<br>
+	<strong>压制: </strong>要求有一定的压制设备（10代i5及以上水平），使用 VapourSynth 进行压制（能写脚本最好，不会也行）（当然我们实际使用的是 OKEGui 进行压制，详见 <a href="https://github.com/lpsub-114514/Encode-Tools" target="_blank"><strong>Github</strong></a>；<br>
+	<strong>时轴:</strong> 能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
+	<strong>繁化:</strong> 如果您生活在或曾经生活在中国香港或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
+	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学
+</p>
+<p><strong>字幕组所收集字体包</strong>: 详见<strong> <a href="https://bbs.acgrip.com/thread-9396-1-1.html">Anime字幕论坛</a></strong></p>`
+})
+
+function changePlatform(index: string) {
+  // @ts-ignore
+  platform.value = index
+}
 </script>
 
 <template>
   <main>
-    <div class="preview" v-html="output"></div>
+    <div class="preview">
+      <el-menu :default-active="platform" mode="horizontal" @select="changePlatform">
+        <el-menu-item index="other">其他</el-menu-item>
+        <el-menu-item index="bangumi">萌番组</el-menu-item>
+      </el-menu>
+      <div class="view" v-html="platform === 'other' ? outputOther : outputBangumi"></div>
+    </div>
     <div class="input"> 
       <el-input v-model="imgSrc" placeholder="填入图片链接" />
 
@@ -96,7 +156,11 @@ const output = computed(() => {
       
       <div class="output">
         <el-input
-          v-model="output"
+          v-model="outputOther"
+          type="textarea"
+        />
+        <el-input
+          v-model="outputBangumi"
           type="textarea"
         />
       </div>
@@ -125,6 +189,11 @@ main {
   
   .preview {
     flex: 4;
+
+    .el-menu {
+      height: 40px;
+      margin-bottom: 10px;
+    }
   }
 
   .input {
@@ -158,6 +227,8 @@ main {
 
     .output {
       flex: 4;
+      display: flex;
+      gap: 16px;
     }
   }
 }
