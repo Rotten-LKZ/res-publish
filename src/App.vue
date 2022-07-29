@@ -179,6 +179,12 @@ body {
 @media (max-width: 768px) {
   main {
     flex-direction: column;
+
+    .input {
+      .output {
+        flex-direction: column;
+      }
+    }
   }
 }
 
