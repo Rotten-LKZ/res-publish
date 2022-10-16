@@ -39,10 +39,8 @@ const outputOther = computed(() => {
 <ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 14px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <li><h4 style="margin: 2px 0; font-size: 20px;">离谱Sub</h4></li>
   ${staff.join('\n  ')}
-  <div style="margin-top: 8px;">
-    <li>本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a> 进行许可</li>
-    <li><a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img style="margin-top: 4px;" src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt="Creative Commons"></a></li>
-  </div>
+  <li>本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a> 进行许可</li>
+  <li><a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img style="margin-top: 4px;" src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt="Creative Commons"></a></li>
 </ul>
 <ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <li><h4 style="margin: 2px 0; font-size: 20px;">交流 / 报错 / 加入我们 欢迎加入</h4></li>
@@ -66,7 +64,7 @@ const outputOther = computed(() => {
 })
 
 const outputBangumi = computed(() => {
-  const staffTemplate = '<p>JOB: NAME</p>'
+  const staffTemplate = 'JOB: NAME<br>'
   let staff: string[] = []
   for (const line of staffTextArea.value.split('\n')) {
     const args = line.split(': ')
@@ -79,27 +77,27 @@ const outputBangumi = computed(() => {
     if (line.startsWith('[img]')) {
       continue
     } else if (line !== '' && !line.includes('◎简　　介')) {
-      workInfoHtml.push(`<p>${line}</p>`)
+      workInfoHtml.push(`${line}<br>`)
     } else if (line !== '' && line.includes('◎简　　介')) {
-      workInfoHtml.push(`<p>${line}</p>`)
-      workInfoHtml.push(`<p>${workInfoLines[workInfoLines.length - 1]}</p>`)
+      workInfoHtml.push(`${line}<br>`)
+      workInfoHtml.push(`${workInfoLines[workInfoLines.length - 1]}<br>`)
       break
     }
   }
 
   return `<p><img alt="封面" src="${imgSrc.value}"></p>
 ${workInfoHtml.join('\n')}
-<p><strong>---------------------------------------------------------------------------------------<br></strong></p>
-<p><strong>离谱Sub</strong><br></p>
+<strong>---------------------------------------------------------------------------------------</strong><br>
+<strong>离谱Sub</strong><br>
 ${staff.join('\n')}
-<p>交流/报错/加入我们 欢迎加入</p>
-<p><strong>QQ群</strong>:<strong> </strong><b>690716401</b></p>
-<p><b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b></p>
-<p><b>Telegram群组: <a href="https://t.me/lpsub_chat" target="_blank"><em>@lpsub_chat</em></a></b></p>
-<p>邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></p>
-<p><a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt=""></a></p>
-<p>本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a>进行许可。</p>
-<p><strong>---------------------------------------------------------------------------------------</strong><br></p>
+交流/报错/加入我们 欢迎加入<br>
+<strong>QQ群</strong>:<strong> </strong><b>690716401</b><br>
+<b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b><br>
+<b>Telegram群组: <a href="https://t.me/lpsub_chat" target="_blank"><em>@lpsub_chat</em></a></b><br>
+邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a><br>
+<a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt=""></a><br>
+本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a>进行许可。<br>
+<strong>---------------------------------------------------------------------------------------</strong><br></p>
 <p>
 	<strong>字幕组招募: 翻译 校对 时轴 压制 繁化</strong><br>
 	<strong>翻译: </strong>能正确听译动画即可，同时有一定语文水平（虽然不一定文笔要多好，但是至少不能写出病句）；<br>
@@ -109,7 +107,7 @@ ${staff.join('\n')}
 	<strong>繁化:</strong> 如果您生活在或曾经生活在中国香港或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
 	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学
 </p>
-<p><strong>字幕组所收集字体包</strong>: 详见<strong> <a href="https://bbs.acgrip.com/thread-9396-1-1.html">Anime字幕论坛</a></strong></p>`
+<strong>字幕组所收集字体包</strong>: 详见<strong> <a href="https://bbs.acgrip.com/thread-9396-1-1.html">Anime字幕论坛</a></strong><br>`
 })
 
 function changePlatform(index: string) {
