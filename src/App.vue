@@ -13,7 +13,7 @@ const outputOther = computed(() => {
   const staffTemplate = '<li><strong>JOB: </strong><span>NAME</span></li>'
   let staff: string[] = []
   for (const line of staffTextArea.value.split('\n')) {
-    const args = line.split(': ')
+    const args = line.split(/: |:|：/)
     staff.push(staffTemplate.replace('JOB', args[0]).replace('NAME', args.splice(1).join(': ')))
   }
 
@@ -39,6 +39,7 @@ const outputOther = computed(() => {
 <ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 14px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <li><h4 style="margin: 2px 0; font-size: 20px;">离谱Sub</h4></li>
   ${staff.join('\n  ')}
+  <br>
   <li>本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a> 进行许可</li>
   <li><a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img style="margin-top: 4px;" src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt="Creative Commons"></a></li>
 </ul>
@@ -89,7 +90,7 @@ const outputBangumi = computed(() => {
 ${workInfoHtml.join('\n')}
 <strong>---------------------------------------------------------------------------------------</strong><br>
 <strong>离谱Sub</strong><br>
-${staff.join('\n')}
+${staff.join('\n')}<br>
 交流/报错/加入我们 欢迎加入<br>
 <strong>QQ群</strong>:<strong> </strong><b>690716401</b><br>
 <b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b><br>
