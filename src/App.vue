@@ -56,7 +56,7 @@ const outputOther = computed(() => {
   <li><strong>校对：</strong><span>能对翻译稿的错误进行校正，同时有一定语文水平（当然也是至少不能写出病句）；</span></li>
   <li><strong>压制：</strong><span>要求有一定的压制设备（10代i5及以上水平），使用 VapourSynth 进行压制（能写脚本最好，不会也行）（当然我们实际使用的是 OKEGui 进行压制，详见 <a href="https://github.com/lpsub-114514/Encode-Tools" target="_blank" style="text-decoration-line: none;"><strong>GitHub</strong></a>；</span></li>
   <li><strong>时轴：</strong><span>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；</span></li>
-  <li><strong>繁化：</strong><span>如果您生活在或曾经生活在中国香港或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；</span></li>
+  <li><strong>繁化：</strong><span>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；</span></li>
   <hr>
   <li><span>我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学</span></li>
   <li><strong>字幕组所收集字体包：</strong><span>详见 <strong><a href="https://bbs.acgrip.com/thread-9396-1-1.html" target="_blank" style="text-decoration-line: none; color: #3d3e5b;">Anime 字幕论坛</a></strong></span></li>
@@ -105,7 +105,7 @@ ${staff.join('\n')}<br>
 	<strong>校对: </strong>能对翻译稿的错误进行校正，同时有一定语文水平（当然也是至少不能写出病句）；<br>
 	<strong>压制: </strong>要求有一定的压制设备（10代i5及以上水平），使用 VapourSynth 进行压制（能写脚本最好，不会也行）（当然我们实际使用的是 OKEGui 进行压制，详见 <a href="https://github.com/lpsub-114514/Encode-Tools" target="_blank"><strong>Github</strong></a>；<br>
 	<strong>时轴:</strong> 能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
-	<strong>繁化:</strong> 如果您生活在或曾经生活在中国香港或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
+	<strong>繁化:</strong> 如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
 	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学
 </p>
 <strong>字幕组所收集字体包</strong>: 详见<strong> <a href="https://bbs.acgrip.com/thread-9396-1-1.html">Anime字幕论坛</a></strong><br>`
