@@ -78,10 +78,12 @@ ${sectionsHtml.join('\n')}
   <li><strong>Telegram群组：</strong><span><a href="https://t.me/lpsub_chat" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"><em>@lpsub_chat</em></a></span></li>
   <li><strong>邮箱：</strong><span><a style="color: rgb(5, 58, 255); text-decoration-line: none; height: 1px;" href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></span></li>
 </ul>
-<details>
-  <summary>MediaInfo（点击展开）</summary>
-  <span>${mediaInfo.value}</span>
-</details>
+<ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
+  <details>
+    <summary>MediaInfo（点击展开）</summary>
+    <span>${mediaInfo.value}</span>
+  </details>
+</ul>
 </div>`
 })
 
