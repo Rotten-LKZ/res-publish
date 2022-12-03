@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "element-plus": "^2.2.19",
+    "html2bbcode": "^1.2.6",
     "sass": "^1.55.0",
-    "vue": "^3.2.41"
+    "vue": "^3.2.41",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@types/node": "16",
