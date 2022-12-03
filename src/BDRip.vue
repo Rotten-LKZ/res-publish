@@ -30,7 +30,7 @@ const texts = ref(`*[titl]离谱Sub
 *[bold]pp: denoise, rescacle, aa, adaptive-sharpen, deband
 ---
 IMAGES COMPARE
-https://img.2222.moe/images/2022/10/14/PE.01.png https://img.2222.moe/images/2022/10/14/PE.01.enced.png
+https://vip1.loli.io/2022/05/11/lwnhicdC3a6K2by.jpg https://vip1.loli.io/2022/05/11/lwnhicdC3a6K2by.jpg
 ---`)
 const mediaInfo = ref('')
 const platform = ref<PublishPlatform>('other')
