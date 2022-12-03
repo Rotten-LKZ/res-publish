@@ -78,6 +78,10 @@ ${sectionsHtml.join('\n')}
   <li><strong>Telegram群组：</strong><span><a href="https://t.me/lpsub_chat" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"><em>@lpsub_chat</em></a></span></li>
   <li><strong>邮箱：</strong><span><a style="color: rgb(5, 58, 255); text-decoration-line: none; height: 1px;" href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></span></li>
 </ul>
+<details>
+  <summary>MediaInfo（点击展开）</summary>
+  <span>${mediaInfo.value}</span>
+</details>
 </div>`
 })
 
@@ -121,7 +125,11 @@ ${sectionsHtml.join('\n')}
 <b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b><br>
 <b>Telegram群组: <a href="https://t.me/lpsub_chat" target="_blank"><em>@lpsub_chat</em></a></b><br>
 邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a><br>
-<b>-------------------------------------------------------------------</b><br>`
+<b>-------------------------------------------------------------------</b><br>
+<details>
+  <summary>MediaInfo（点击展开）</summary>
+  <span>${mediaInfo.value}</span>
+</details>`
 })
 
 const outputBBCode = computed(() => new HTML2BBCode().feed(outputBangumi.value).toString())
