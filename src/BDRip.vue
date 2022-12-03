@@ -57,9 +57,9 @@ const outputOther = computed(() => {
       }
       if (l.startsWith('*[')) {
         // @ts-ignore
-        sHtml.push(specialStylesOther[l.substring(0, 7)].replace('REPLACE', l.substring(7).replace('\n', '<br>')))
+        sHtml.push(specialStylesOther[l.substring(0, 7)].replace('REPLACE', l.substring(7).replace(/\n/g, '<br>')))
       } else {
-        sHtml.push(`  <li><span>${l === '' ? '<br>' : l.replace('\n', '<br>')}</span></li>`)
+        sHtml.push(`  <li><span>${l === '' ? '<br>' : l.replace(/\n/g, '<br>')}</span></li>`)
       }
     }
     sHtml.push('</ul>')
@@ -81,7 +81,7 @@ ${sectionsHtml.join('\n')}
 <ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <details>
     <summary>MediaInfo（点击展开）</summary><br>
-    <span>${mediaInfo.value.replace('\n', '<br>')}</span>
+    <span>${mediaInfo.value.replace(/\n/g, '<br>')}</span>
   </details>
 </ul>
 </div>`
@@ -109,9 +109,9 @@ const outputBangumi = computed(() => {
       }
       if (l.startsWith('*[')) {
         // @ts-ignore
-        sHtml.push(specialStylesBangumi[l.substring(0, 7)].replace('REPLACE', l.substring(7).replace('\n', '<br>')))
+        sHtml.push(specialStylesBangumi[l.substring(0, 7)].replace('REPLACE', l.substring(7).replace(/\n/g, '<br>')))
       } else {
-        sHtml.push(`${l === '' ? '<br>' : l.replace('\n', '<br>')}<br>`)
+        sHtml.push(`${l === '' ? '<br>' : l.replace(/\n/g, '<br>')}<br>`)
       }
     }
     sHtml.push('<br><b>-------------------------------------------------------------------</b><br>')
@@ -130,7 +130,7 @@ ${sectionsHtml.join('\n')}
 <b>-------------------------------------------------------------------</b><br>
 <details>
   <summary>MediaInfo（点击展开）</summary><br>
-  <span>${mediaInfo.value.replace('\n', '<br>')}</span>
+  <span>${mediaInfo.value.replace(/\n/g, '<br>')}</span>
 </details>`
 })
 
