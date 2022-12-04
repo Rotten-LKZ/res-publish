@@ -17,7 +17,7 @@ const specialStylesBangumi = {
 }
 
 const imgSrc = ref('')
-const texts = ref(`*[titl]离谱Sub
+const texts = ref(`*[titl]LP-Raws@离谱Sub
 *[blue]白金终局 / プラチナエンド / Platinum End
 ---
 *[blue]本 BDRip 由 AI-Raws 编写脚本/参数
@@ -57,7 +57,7 @@ const outputOther = computed(() => {
       }
       if (l.startsWith('*[')) {
         // @ts-ignore
-        sHtml.push(specialStylesOther[l.substring(0, 7)].replace('REPLACE', l.substring(7).replace(/\n/g, '<br>')))
+        sHtml.push(specialStylesOther[l.substring(0, 7)]?.replace('REPLACE', l.substring(7).replace(/\n/g, '<br>')))
       } else {
         sHtml.push(`  <li><span>${l === '' ? '<br>' : l.replace(/\n/g, '<br>')}</span></li>`)
       }
@@ -109,7 +109,7 @@ const outputBangumi = computed(() => {
       }
       if (l.startsWith('*[')) {
         // @ts-ignore
-        sHtml.push(specialStylesBangumi[l.substring(0, 7)].replace('REPLACE', l.substring(7).replace(/\n/g, '<br>')))
+        sHtml.push(specialStylesBangumi[l.substring(0, 7)]?.replace('REPLACE', l.substring(7).replace(/\n/g, '<br>')))
       } else {
         sHtml.push(`${l === '' ? '<br>' : l.replace(/\n/g, '<br>')}<br>`)
       }
