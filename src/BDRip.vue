@@ -20,13 +20,13 @@ const imgSrc = ref('')
 const texts = ref(`*[titl]LP-Raws@离谱Sub
 *[blue]白金终局 / プラチナエンド / Platinum End
 ---
-*[blue]本 BDRip 由 AI-Raws 编写脚本/参数
+*[blue]本 BDRip 由 LP-Raws 编写脚本/参数
 *[blue]本字幕由 离谱Sub 制作
 
 *[blue]The script and encode parameter were written by AI-Raws.
 *[blue]The subtitles were produced by LPSub.
 
-巴拉巴拉
+__的原盘画质__，我们使用____进行____，同时配合_____
 *[bold]pp: denoise, rescacle, aa, adaptive-sharpen, deband
 ---
 IMAGES COMPARE
