@@ -23,7 +23,7 @@ const texts = ref(`*[titl]LP-Raws@离谱Sub
 *[blue]本 BDRip 由 LP-Raws 编写脚本/参数
 *[blue]本字幕由 离谱Sub 制作
 
-*[blue]The script and encode parameter were written by AI-Raws.
+*[blue]The script and encode parameter were written by LP-Raws.
 *[blue]The subtitles were produced by LPSub.
 
 __的原盘画质__，我们使用____进行____，同时配合_____
