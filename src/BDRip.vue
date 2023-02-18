@@ -1,19 +1,20 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { HTML2BBCode } from 'html2bbcode'
+import utils from './utils';
 
 type PublishPlatform = 'bangumi' | 'other'
 
 const specialStylesOther = {
   '*[titl]': '  <li><h4 style="margin: 2px 0; font-size: 20px;">REPLACE</h4></li>',
   '*[bold]': '  <li><strong>REPLACE</strong></li>',
-  '*[blue]': '  <li><span style="color: rgb(33, 66, 115);">REPLACE</span></li>',
+  '*[blue]': '  <li><span style="color: rgb(33, 66, 115); font-weight: bold;">REPLACE</span></li>',
 }
 
 const specialStylesBangumi = {
   '*[titl]': '  <h4 style="margin: 2px 0; font-size: 20px;">REPLACE</h4>',
   '*[bold]': '  <b>REPLACE</b>',
-  '*[blue]': '  <span style="color: rgb(33, 66, 115);">REPLACE</span>',
+  '*[blue]': '  <span style="color: rgb(33, 66, 115); font-weight: bold;">REPLACE</span>',
 }
 
 const imgSrc = ref('')
@@ -30,7 +31,9 @@ __的原盘画质__，我们使用____进行____，同时配合_____
 *[bold]pp: denoise, rescacle, aa, adaptive-sharpen, deband
 ---
 IMAGES COMPARE
-https://vip1.loli.io/2022/05/11/lwnhicdC3a6K2by.jpg https://vip1.loli.io/2022/05/11/lwnhicdC3a6K2by.jpg
+https://p.sda1.dev/9/b402c15ae7e1163078663ca73f912089/10.png https://p.sda1.dev/9/8ed40ee6a28bd1f0b04e1edaf4409b7e/10_scaled.webp | https://p.sda1.dev/9/421ebc23b4790f9fbe92424c3b92d24f/11.png https://p.sda1.dev/9/185efe0dab6905437a5792f96754174a/11_scaled.webp
+
+https://p.sda1.dev/9/b402c15ae7e1163078663ca73f912089/10.png https://p.sda1.dev/9/8ed40ee6a28bd1f0b04e1edaf4409b7e/10_scaled.webp | https://p.sda1.dev/9/421ebc23b4790f9fbe92424c3b92d24f/11.png https://p.sda1.dev/9/185efe0dab6905437a5792f96754174a/11_scaled.webp
 ---`)
 const mediaInfo = ref('')
 const platform = ref<PublishPlatform>('other')
@@ -50,8 +53,10 @@ const outputOther = computed(() => {
         if (l === lines[0]) {
           sHtml.push('  <li>_______________________source___________________________________encode_______________________</li>')
           sHtml.push('  <li></li>')
-        } else {
-          sHtml.push(`  <li><img src="${l.split(' ')[0]}" width="350" height="197" align="textTop" hspace="5" vspace="5" alt=""><img src="${l.split(' ')[1]}" width="350" height="197" align="textTop" hspace="5" vspace="5" alt=""></li>`)
+        } else if (l.trim() !== '') {
+          // 原图 缩略图 | 原图 缩略图
+          const imgs = l.split(/ *\| */)
+          sHtml.push(`  <li><a href="${imgs[0].split(' ')[0]}" target="_blank" rel="external nofollow"><img width="350" height="197" align="textTop" hspace="5" vspace="5" alt="" src="${imgs[0].split(' ')[1]}" /></a> <a href="${imgs[1].split(' ')[0]}" target="_blank" rel="external nofollow"><img width="350" height="197" align="textTop" hspace="5" vspace="5" alt="" src="${imgs[1].split(' ')[1]}" /></a></li>`)
         }
         continue
       }
@@ -96,38 +101,39 @@ const outputBangumi = computed(() => {
   }
   const sectionsHtml = []
   for (const s of sections) {
-    const sHtml = [`<br><b>-------------------------------------------------------------------</b><br>`]
+    const sHtml = []
     const lines = s.split('\n')
     for (const l of lines) {
       if (lines[0] === 'IMAGES COMPARE') {
         if (l === lines[0]) {
           sHtml.push('_______________________source___________________________________encode_______________________<br>')
-        } else {
-          sHtml.push(`<img src="${l.split(' ')[0]}" width="350" height="197" align="textTop" hspace="5" vspace="5" alt=""><img src="${l.split(' ')[1]}" width="350" height="197" align="textTop" hspace="5" vspace="5" alt=""><br>`)
+        } else if (l.trim() !== '') {
+          // 原图 缩略图 | 原图 缩略图
+          const imgs = l.split(/ *\| */)
+          sHtml.push(`  <li><a href="${imgs[0].split(' ')[0]}" target="_blank" rel="external nofollow"><img width="350" height="197" align="textTop" hspace="5" vspace="5" alt="" src="${imgs[0].split(' ')[1]}" /></a> <a href="${imgs[1].split(' ')[0]}" target="_blank" rel="external nofollow"><img width="350" height="197" align="textTop" hspace="5" vspace="5" alt="" src="${imgs[1].split(' ')[1]}" /></a></li>`)
         }
         continue
       }
       if (l.startsWith('*[')) {
         // @ts-ignore
-        sHtml.push(specialStylesBangumi[l.substring(0, 7)]?.replace('REPLACE', l.substring(7).replace(/\n/g, '<br>')))
+        sHtml.push(`${specialStylesBangumi[l.substring(0, 7)]?.replace('REPLACE', l.substring(7))}${l.startsWith('*[titl]') ? '' : '<br>'}`)
       } else {
-        sHtml.push(`${l === '' ? '<br>' : l.replace(/\n/g, '<br>')}<br>`)
+        sHtml.push(`${l}<br>`)
       }
     }
-    sHtml.push('<br><b>-------------------------------------------------------------------</b><br>')
+    sHtml.push('<hr>')
     sectionsHtml.push(sHtml.join('\n'))
   }
 
   return `<p><img alt="封面" src="${imgSrc.value}"></p>
 ${sectionsHtml.join('\n')}
-<b>-------------------------------------------------------------------</b><br>
 <strong>离谱Sub</strong><br>
 交流/报错/加入我们 欢迎加入<br>
 <strong>QQ群</strong>:<strong> </strong><b>690716401</b><br>
 <b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b><br>
 <b>Telegram群组: <a href="https://t.me/lpsub_chat" target="_blank"><em>@lpsub_chat</em></a></b><br>
 邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a><br>
-<b>-------------------------------------------------------------------</b><br>
+<hr>
 <details>
   <summary>MediaInfo（点击展开）</summary><br>
   <span>${mediaInfo.value.replace(/\n/g, '<br>')}</span>
@@ -135,6 +141,9 @@ ${sectionsHtml.join('\n')}
 })
 
 const outputBBCode = computed(() => new HTML2BBCode().feed(outputBangumi.value).toString())
+
+const encodeOther = computed(() => utils.html.htmlEncode(outputOther.value))
+const encodeBangumi = computed(() => utils.html.htmlEncode(outputBangumi.value))
 
 function changePlatform(index: string) {
   // @ts-ignore
@@ -175,12 +184,12 @@ function changePlatform(index: string) {
       
       <div class="output">
         <el-input
-          v-model="outputOther"
+          v-model="encodeOther"
           v-show="platform === 'other'"
           type="textarea"
         />
         <el-input
-          v-model="outputBangumi"
+          v-model="encodeBangumi"
           v-show="platform === 'bangumi'"
           type="textarea"
         />
