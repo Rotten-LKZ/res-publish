@@ -1,9 +1,13 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
+import TurndownService from 'turndown'
 import { HTML2BBCode } from 'html2bbcode'
-import utils from './utils';
+import utils from './utils'
 
 type PublishPlatform = 'bangumi' | 'other'
+type SpecialOutput = 'BBCode' | 'Markdown'
+
+const turndown = new TurndownService()
 
 const specialStylesOther = {
   '*[titl]': '  <li><h4 style="margin: 2px 0; font-size: 20px;">REPLACE</h4></li>',
@@ -37,6 +41,7 @@ https://p.sda1.dev/9/b402c15ae7e1163078663ca73f912089/10.png https://p.sda1.dev/
 ---`)
 const mediaInfo = ref('')
 const platform = ref<PublishPlatform>('other')
+const specialOutput = ref<SpecialOutput>('BBCode')
 const outputOther = computed(() => {
   const sections: string[] = []
   for (const s of texts.value.split('---')) {
@@ -140,7 +145,7 @@ ${sectionsHtml.join('\n')}
 </details>`
 })
 
-const outputBBCode = computed(() => new HTML2BBCode().feed(outputBangumi.value).toString())
+const outputSpecial = computed(() => specialOutput.value === 'BBCode' ? new HTML2BBCode().feed(outputBangumi.value).toString() : turndown.turndown(outputBangumi.value))
 
 const encodeOther = computed(() => utils.html.htmlEncode(outputOther.value))
 const encodeBangumi = computed(() => utils.html.htmlEncode(outputBangumi.value))
@@ -159,6 +164,7 @@ function changePlatform(index: string) {
           <el-menu-item index="other">其他</el-menu-item>
           <el-menu-item index="bangumi">萌番组</el-menu-item>
         </el-menu>
+        <el-button @click="specialOutput = specialOutput === 'BBCode' ? 'Markdown' : 'BBCode'">{{ specialOutput === 'BBCode' ? 'Markdown' : 'BBCode' }}</el-button>
         <el-button @click="$router.push('/')">常规</el-button>
       </div>
       <div class="view" v-html="platform === 'other' ? outputOther : outputBangumi"></div>
@@ -194,7 +200,7 @@ function changePlatform(index: string) {
           type="textarea"
         />
         <el-input
-          v-model="outputBBCode"
+          v-model="outputSpecial"
           type="textarea"
         />
       </div>
