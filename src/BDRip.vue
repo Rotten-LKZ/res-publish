@@ -189,12 +189,12 @@ function changePlatform(index: string) {
       
       <div class="output">
         <el-input
-          v-model="encodeOther"
+          v-model="outputOther"
           v-show="platform === 'other'"
           type="textarea"
         />
         <el-input
-          v-model="encodeBangumi"
+          v-model="outputBangumi"
           v-show="platform === 'bangumi'"
           type="textarea"
         />
