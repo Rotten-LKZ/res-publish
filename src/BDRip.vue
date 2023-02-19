@@ -31,7 +31,6 @@ const texts = ref(`*[titl]LP-Raws@离谱Sub
 *[blue]The script and encode parameter were written by LP-Raws.
 *[blue]The subtitles were produced by LPSub.
 
-__的原盘画质__，我们使用____进行____，同时配合_____
 *[bold]pp: denoise, rescacle, aa, adaptive-sharpen, deband
 ---
 IMAGES COMPARE
