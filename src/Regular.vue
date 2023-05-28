@@ -6,6 +6,7 @@ type PublishPlatform = 'bangumi' | 'other'
 
 const imgSrc = ref('')
 const workInfo = ref('')
+const pp = ref('denoise, rescacle, aa, adaptive-sharpen, deband')
 const staffTextArea = ref('')
 const CC = ref<CCType>('by-nc-sa')
 const platform = ref<PublishPlatform>('other')
@@ -40,7 +41,7 @@ const outputOther = computed(() => {
   <li><h4 style="margin: 2px 0; font-size: 20px;">离谱Sub</h4></li>
   ${staff.join('\n  ')}
   <br>
-  <li><span style="font-weight: bold;">pp: denoise, rescacle, aa, adaptive-sharpen, deband</span></li>
+  <li><span style="font-weight: bold;">pp: ${pp.value}</span></li>
   <br>
   <li>本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a> 进行许可</li>
   <li><a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img style="margin-top: 4px;" src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt="Creative Commons"></a></li>
@@ -93,6 +94,7 @@ ${workInfoHtml.join('\n')}
 <strong>---------------------------------------------------------------------------------------</strong><br>
 <strong>离谱Sub</strong><br>
 ${staff.join('\n')}<br>
+<br><strong>${pp.value}</strong><br>
 交流/报错/加入我们 欢迎加入<br>
 <strong>QQ群</strong>:<strong> </strong><b>690716401</b><br>
 <b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b><br>
@@ -147,6 +149,12 @@ function changePlatform(index: string) {
           v-model="staffTextArea"
           type="textarea"
           placeholder="填入 Staff，一行一个，空格或冒号区分。例如：嵌字：甲乙丙丁"
+        />
+      </div>
+
+      <div class="pp">
+        <el-input
+          v-model="pp"
         />
       </div>
 
