@@ -40,6 +40,8 @@ const outputOther = computed(() => {
   <li><h4 style="margin: 2px 0; font-size: 20px;">离谱Sub</h4></li>
   ${staff.join('\n  ')}
   <br>
+  <li><span style="font-weight: bold;">pp: denoise, rescacle, aa, adaptive-sharpen, deband</span></li>
+  <br>
   <li>本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a> 进行许可</li>
   <li><a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img style="margin-top: 4px;" src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt="Creative Commons"></a></li>
 </ul>
@@ -52,9 +54,9 @@ const outputOther = computed(() => {
 </ul>
 <ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <li><h4 style="margin: 2px 0; font-size: 20px;">字幕组招募：翻译 校对 时轴 压制 繁化</h4></li>
-  <li><strong>翻译：</strong><span>能正确听译动画即可，同时有一定语文水平（虽然不一定文笔要多好，但是至少不能写出病句）；</span></li>
+  <li><strong>翻译：</strong><span>能正确听译动画即可（不要求百分百正确），同时有一定中文水平；</span></li>
   <li><strong>校对：</strong><span>能对翻译稿的错误进行校正，同时有一定语文水平（当然也是至少不能写出病句）；</span></li>
-  <li><strong>压制：</strong><span>要求有一定的压制设备（10代i5及以上水平），使用 VapourSynth 进行压制（能写脚本最好，不会也行）（当然我们实际使用的是 OKEGui 进行压制，详见 <a href="https://github.com/lpsub-114514/Encode-Tools" target="_blank" style="text-decoration-line: none;"><strong>GitHub</strong></a>；</span></li>
+  <li><strong>压制：</strong><span>要求有一定的压制设备（桌面端 13 代 i5 或 E5-v3/v4 及以上水平），使用 VapourSynth 进行压制；</span></li>
   <li><strong>时轴：</strong><span>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；</span></li>
   <li><strong>繁化：</strong><span>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；</span></li>
   <hr>
@@ -101,11 +103,11 @@ ${staff.join('\n')}<br>
 <strong>---------------------------------------------------------------------------------------</strong><br></p>
 <p>
 	<strong>字幕组招募: 翻译 校对 时轴 压制 繁化</strong><br>
-	<strong>翻译: </strong>能正确听译动画即可，同时有一定语文水平（虽然不一定文笔要多好，但是至少不能写出病句）；<br>
-	<strong>校对: </strong>能对翻译稿的错误进行校正，同时有一定语文水平（当然也是至少不能写出病句）；<br>
-	<strong>压制: </strong>要求有一定的压制设备（10代i5及以上水平），使用 VapourSynth 进行压制（能写脚本最好，不会也行）（当然我们实际使用的是 OKEGui 进行压制，详见 <a href="https://github.com/lpsub-114514/Encode-Tools" target="_blank"><strong>Github</strong></a>；<br>
-	<strong>时轴:</strong> 能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
-	<strong>繁化:</strong> 如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
+	<strong>翻译: </strong>能正确听译动画即可（不要求百分百正确），同时有一定中文水平；<br>
+	<strong>校对: </strong>能对翻译稿的错误进行校正，同时有一定中文水平；<br>
+	<strong>压制: </strong>要求有一定的压制设备（桌面端 13 代 i5 或 E5-v3/v4 及以上水平），使用 VapourSynth 进行压制；<br>
+	<strong>时轴:</strong>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
+	<strong>繁化:</strong>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
 	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学
 </p>
 <strong>字幕组所收集字体包</strong>: 详见<strong> <a href="https://bbs.acgrip.com/thread-9396-1-1.html">Anime字幕论坛</a></strong><br>`

@@ -38,7 +38,6 @@ https://p.sda1.dev/9/b402c15ae7e1163078663ca73f912089/10.png https://p.sda1.dev/
 
 https://p.sda1.dev/9/b402c15ae7e1163078663ca73f912089/10.png https://p.sda1.dev/9/8ed40ee6a28bd1f0b04e1edaf4409b7e/10_scaled.webp | https://p.sda1.dev/9/421ebc23b4790f9fbe92424c3b92d24f/11.png https://p.sda1.dev/9/185efe0dab6905437a5792f96754174a/11_scaled.webp
 ---`)
-const mediaInfo = ref('')
 const platform = ref<PublishPlatform>('other')
 const specialOutput = ref<SpecialOutput>('BBCode')
 const outputOther = computed(() => {
@@ -87,12 +86,6 @@ ${sectionsHtml.join('\n')}
   <li><strong>Telegram群组：</strong><span><a href="https://t.me/lpsub_chat" target="_blank" style="color: rgb(5, 58, 255); text-decoration-line: none;"><em>@lpsub_chat</em></a></span></li>
   <li><strong>邮箱：</strong><span><a style="color: rgb(5, 58, 255); text-decoration-line: none; height: 1px;" href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a></span></li>
 </ul>
-<ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
-  <details>
-    <summary>MediaInfo（点击展开）</summary><br>
-    <span>${mediaInfo.value.replace(/\n/g, '<br>')}</span>
-  </details>
-</ul>
 </div>`
 })
 
@@ -136,12 +129,7 @@ ${sectionsHtml.join('\n')}
 <strong>QQ群</strong>:<strong> </strong><b>690716401</b><br>
 <b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b><br>
 <b>Telegram群组: <a href="https://t.me/lpsub_chat" target="_blank"><em>@lpsub_chat</em></a></b><br>
-邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a><br>
-<hr>
-<details>
-  <summary>MediaInfo（点击展开）</summary><br>
-  <span>${mediaInfo.value.replace(/\n/g, '<br>')}</span>
-</details>`
+邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a><br>`
 })
 
 const outputSpecial = computed(() => specialOutput.value === 'BBCode' ? new HTML2BBCode().feed(outputBangumi.value).toString() : turndown.turndown(outputBangumi.value))
@@ -176,14 +164,6 @@ function changePlatform(index: string) {
           v-model="texts"
           type="textarea"
           placeholder="输入自定义文本"
-        />
-      </div>
-
-      <div class="mediainfo">
-        <el-input
-          v-model="mediaInfo"
-          type="textarea"
-          placeholder="输入 MediaInfo"
         />
       </div>
       
@@ -264,10 +244,6 @@ main {
 
     .con {
       flex: 3
-    }
-
-    .mediainfo {
-      flex: 1;
     }
     
     .cc-type {
