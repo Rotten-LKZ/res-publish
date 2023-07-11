@@ -21,6 +21,7 @@ const outputOther = computed(() => {
   const workInfoLines = workInfo.value.split('\n')
   let workInfoHtml: string[] = []
   for (const line of workInfoLines) {
+    console.log(line)
     if (line.startsWith('[img]')) {
       continue
     } else if (line !== '' && !line.includes('◎简　　介')) {
@@ -56,10 +57,16 @@ const outputOther = computed(() => {
 <ul style="font-family: 'Sarasa Gothic SC', 'Source Han Sans CN', 'Noto Sans SC', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif; color: rgb(60, 60, 60); font-size: 13px; margin-top: 20px; font-size: 12px; padding: 9px 18px; border-left: 4px solid rgb(33, 66, 115); background-color: #fafafa; list-style: none; word-break: break-all; position: relative; overflow: hidden;">
   <li><h4 style="margin: 2px 0; font-size: 20px;">字幕组招募：翻译 校对 时轴 压制 繁化</h4></li>
   <li><strong>翻译：</strong><span>能正确听译动画即可（不要求百分百正确），同时有一定中文水平；</span></li>
-  <li><strong>校对：</strong><span>能对翻译稿的错误进行校正，同时有一定语文水平（当然也是至少不能写出病句）；</span></li>
+  <li><strong>校对：</strong><span>能对翻译稿的错误进行校正，同时有一定中文水平；</span></li>
   <li><strong>压制：</strong><span>要求有一定的压制设备（桌面端 13 代 i5 或 E5-v3/v4 及以上水平），使用 VapourSynth 进行压制；</span></li>
   <li><strong>时轴：</strong><span>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；</span></li>
   <li><strong>繁化：</strong><span>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；</span></li>
+  <hr>
+  <li><h4 style="margin: 2px 0; font-size: 20px;">分流组招募</h4></li>
+  <li><span style="color: rgb(33, 66, 115); font-weight: bold;">为求优化公网保种情况起见，兹成立分流组，以对我组所发布合集资源进行长期保种，同时对连载新番进行分流。 </span></li>
+  <li><span style="color: rgb(33, 66, 115); font-weight: bold;">若各位友人，拥公网之条件，愿出力以协助，则实为大善也。还请愿提供帮助之群友，加入QQ群 675236408 或 <span><a href="https://t.me/+GyNPAxTgKbk2MjI1" target="_blank" style="color: #000000; text-decoration-line: none;" rel="external nofollow">TG群</a></span>； </span></li>
+  <li><span style="color: rgb(33, 66, 115); font-weight: bold;">用是发愤立志，务当同心协力，俾克有成。 </span></li>
+  <li><span style="color: rgb(33, 66, 115); font-weight: bold;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——LPSub / LP-Raws</span></li>
   <hr>
   <li><span>我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学</span></li>
   <li><strong>字幕组所收集字体包：</strong><span>详见 <strong><a href="https://bbs.acgrip.com/thread-9396-1-1.html" target="_blank" style="text-decoration-line: none; color: #3d3e5b;">Anime 字幕论坛</a></strong></span></li>
@@ -110,7 +117,13 @@ ${staff.join('\n')}<br>
 	<strong>压制: </strong>要求有一定的压制设备（桌面端 13 代 i5 或 E5-v3/v4 及以上水平），使用 VapourSynth 进行压制；<br>
 	<strong>时轴:</strong>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
 	<strong>繁化:</strong>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
-	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学
+	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学<br>
+<strong>---------------------------------------------------------------------------------------</strong><br>
+  <strong>分流组招募</strong><br>
+  为求优化公网保种情况起见，兹成立分流组，以对我组所发布合集资源进行长期保种，同时对连载新番进行分流。<br>
+  若各位友人，拥公网之条件，愿出力以协助，则实为大善也。还请愿提供帮助之群友，加入QQ群 675236408 或 <a href="https://t.me/+GyNPAxTgKbk2MjI1" target="_blank" style="color: #000000; text-decoration-line: none;" rel="external nofollow">TG群</a></span>； <br/>
+  用是发愤立志，务当同心协力，俾克有成。<br>
+  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——LPSub / LP-Raws<br>
 </p>
 <strong>字幕组所收集字体包</strong>: 详见<strong> <a href="https://bbs.acgrip.com/thread-9396-1-1.html">Anime字幕论坛</a></strong><br>`
 })
