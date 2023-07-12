@@ -21,15 +21,11 @@ const outputOther = computed(() => {
   const workInfoLines = workInfo.value.split('\n')
   let workInfoHtml: string[] = []
   for (const line of workInfoLines) {
-    console.log(line)
     if (line.startsWith('[img]')) {
       continue
-    } else if (line !== '' && !line.includes('◎简　　介')) {
-      workInfoHtml.push(`<div>${line}</div>`)
-    } else if (line !== '' && line.includes('◎简　　介')) {
-      workInfoHtml.push(`<div>${line}</div>`)
-      workInfoHtml.push(`<span>${workInfoLines[workInfoLines.length - 1]}</span>`)
-      break
+    } else if (line !== '') {
+      // 将半角空格替换成&nbsp; 全角空格替换成$emsp;
+      workInfoHtml.push(`<div>${line.replace(/ /g, '&nbsp;').replace(/　/g, '&emsp;')}</div>`)
     }
   }
 
@@ -87,12 +83,8 @@ const outputBangumi = computed(() => {
   for (const line of workInfoLines) {
     if (line.startsWith('[img]')) {
       continue
-    } else if (line !== '' && !line.includes('◎简　　介')) {
-      workInfoHtml.push(`${line}<br>`)
-    } else if (line !== '' && line.includes('◎简　　介')) {
-      workInfoHtml.push(`${line}<br>`)
-      workInfoHtml.push(`${workInfoLines[workInfoLines.length - 1]}<br>`)
-      break
+    } else if (line !== '') {
+      workInfoHtml.push(`${line.replace(/ /g, '&nbsp;').replace(/　/g, '&emsp;')}<br>`)
     }
   }
 
