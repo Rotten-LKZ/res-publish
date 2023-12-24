@@ -118,7 +118,7 @@ const outputBangumi = computed(() => {
         sHtml.push(`${l}<br>`)
       }
     }
-    sHtml.push('<hr>')
+    sHtml.push('<br><hr><br>')
     sectionsHtml.push(sHtml.join('\n'))
   }
 
