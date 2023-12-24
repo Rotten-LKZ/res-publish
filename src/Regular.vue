@@ -74,7 +74,7 @@ const outputBangumi = computed(() => {
   const staffTemplate = 'JOB: NAME<br>'
   let staff: string[] = []
   for (const line of staffTextArea.value.split('\n')) {
-    const args = line.split(': ')
+    const args = line.split(/: |:|：/)
     staff.push(staffTemplate.replace('JOB', args[0]).replace('NAME', args.splice(1).join(': ')))
   }
 
@@ -90,10 +90,10 @@ const outputBangumi = computed(() => {
 
   return `<p><img alt="封面" src="${imgSrc.value}"></p>
 ${workInfoHtml.join('\n')}
-<strong>---------------------------------------------------------------------------------------</strong><br>
+<br><hr><br>
 <strong>离谱Sub</strong><br>
 ${staff.join('\n')}<br>
-<br><strong>${pp.value}</strong><br>
+<br><strong>pp: ${pp.value}</strong><br>
 交流/报错/加入我们 欢迎加入<br>
 <strong>QQ群</strong>:<strong> </strong><b>690716401</b><br>
 <b>Telegram频道: <a href="https://t.me/lpsub_ch" target="_blank"><em>@lpsub_ch</em></a></b><br>
@@ -101,7 +101,8 @@ ${staff.join('\n')}<br>
 邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a><br>
 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt=""></a><br>
 本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a>进行许可。<br>
-<strong>---------------------------------------------------------------------------------------</strong><br></p>
+</p>
+<br><hr><br>
 <p>
 	<strong>字幕组招募: 翻译 校对 时轴 压制 繁化</strong><br>
 	<strong>翻译: </strong>能正确听译动画即可（不要求百分百正确），同时有一定中文水平；<br>
@@ -110,7 +111,7 @@ ${staff.join('\n')}<br>
 	<strong>时轴:</strong>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
 	<strong>繁化:</strong>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
 	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学<br>
-<strong>---------------------------------------------------------------------------------------</strong><br>
+<br><hr><br>
   <strong>分流组招募</strong><br>
   为求优化公网保种情况起见，兹成立分流组，以对我组所发布合集资源进行长期保种，同时对连载新番进行分流。<br>
   若各位友人，拥公网之条件，愿出力以协助，则实为大善也。还请愿提供帮助之群友，加入QQ群 675236408 或 <a href="https://t.me/+GyNPAxTgKbk2MjI1" target="_blank" style="color: #000000; text-decoration-line: none;" rel="external nofollow">TG群</a></span>； <br/>
