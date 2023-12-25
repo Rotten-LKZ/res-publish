@@ -94,8 +94,8 @@ ${workInfoHtml.join('\n')}
 <h2>离谱Sub</h2>
 ${staff.join('\n')}<br>
 <br><strong>pp: ${pp.value}</strong><br><br>
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank"><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt=""></a><br>
-本作品采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br>
+<a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank"><img src="https://i.creativecommons.org/l/${CC.value}/4.0/88x31.png" alt=""></a><br>
+本作品采用 <a href="https://creativecommons.org/licenses/${CC.value}/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-${CC.value === 'by-nc-nd' ? '禁止演绎' : '相同方式共享'} 4.0 国际许可协议</a>进行许可。<br>
 <br><hr>
 <h2>交流/报错/加入我们 欢迎加入</h2>
 <strong>QQ群</strong>:<strong> </strong><b>690716401</b><br>
@@ -104,11 +104,11 @@ ${staff.join('\n')}<br>
 邮箱: <a href="mailto:lpsub@yunyize.com">lpsub@yunyize.com</a><br>
 <br><hr>
 	<h2>字幕组招募: 翻译 校对 时轴 压制 繁化</h2>
-	<strong>翻译: </strong>能正确听译动画即可（不要求百分百正确），同时有一定中文水平；<br>
-	<strong>校对: </strong>能对翻译稿的错误进行校正，同时有一定中文水平；<br>
-	<strong>压制: </strong>要求有一定的压制设备（桌面端 13 代 i5 或 E5-v3/v4 及以上水平），使用 VapourSynth 进行压制；<br>
-	<strong>时轴:</strong>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
-	<strong>繁化:</strong>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
+	<strong>翻译：</strong>能正确听译动画即可（不要求百分百正确），同时有一定中文水平；<br>
+	<strong>校对：</strong>能对翻译稿的错误进行校正，同时有一定中文水平；<br>
+	<strong>压制：</strong>要求有一定的压制设备（桌面端 13 代 i5 或 E5-v3/v4 及以上水平），使用 VapourSynth 进行压制；<br>
+	<strong>时轴：</strong>能使用 Aegisub 打轴，同时能利用 Advanced SubStation Alpha 和 Aegisub 等的特性写一些特效，同时能设置合适的样式；<br>
+	<strong>繁化：</strong>如果您生活在或曾经生活在港/台或其周边地区，对当地用语习惯比较熟悉，那么欢迎加入我们，进行字幕繁化工作；<br>
 	我们长期提供 <strong>时轴</strong> / <strong>压制</strong> 教学<br>
 <br><hr>
   <h2>分流组招募</h2>
